@@ -1,0 +1,194 @@
+veg-names = '#img-melon, #img-carrot, #img-watermelon, #img-kiwi, #img-cucumber, #img-pepper, #img-tomato'
+//url-img = 'https://pp.vk.me/c630125/v630125151/1ecc/wMTXhTawg8w.jpg, + https://pp.vk.me/c630125/v630125151/1ed6/frqxQ6oR6Ho.jpg,
+//  https://pp.vk.me/c630125/v630125151/1eec/daAy02g-Fhc.jpg,
+//  https://pp.vk.me/c630125/v630125151/1ec2/xmTB7Eq0e38.jpg,
+//  https://pp.vk.me/c630125/v630125151/1eb9/Zgg2HCd0yi4.jpg,
+//  https://pp.vk.me/c630125/v630125151/1ede/G-FVz0bas0c.jpg,
+//  https://pp.vk.me/c630125/v630125151/1ee5/R4k4jbruF2A.jpg'
+
+prefix(prop, arg)
+  -webkit-{prop} arg
+  -moz-{prop} arg
+  -o-{prop} arg
+
+init(url)
+  background: url(url) no-repeat;
+  prefix(background-size, 100%)
+
+//func()
+//  for url in url-img
+//  {veg-names}
+//      init({url})
+
+
+transf(trX, rotY)
+  transform: translateX(trX) perspective(300px) rotateY(rotY) translateZ(-40px)
+
+
+.container
+  transform-style: preserve-3d
+  width: 100%
+  text-align: center
+  margin-top: 12em
+
+.veg
+  display: none
+
+label
+  position: relative
+  display: inline-flex
+  width: 13%
+  height: 120px
+  transition-property: transform
+  transition-duration: .5s
+  box-shadow: 0 1em 2em rgba(60, 63, 65, .78)
+
+#img-melon
+  background: url('https://pp.vk.me/c630125/v630125151/1ecc/wMTXhTawg8w.jpg') no-repeat;
+
+#img-carrot
+  background: url('https://pp.vk.me/c630125/v630125151/1ed6/frqxQ6oR6Ho.jpg') no-repeat;
+
+#img-watermelon
+  background: url('https://pp.vk.me/c630125/v630125151/1eec/daAy02g-Fhc.jpg') no-repeat;
+
+#img-kiwi
+  background: url('https://pp.vk.me/c630125/v630125151/1ec2/xmTB7Eq0e38.jpg') no-repeat;
+
+#img-cucumber
+  background: url('https://pp.vk.me/c630125/v630125151/1eb9/Zgg2HCd0yi4.jpg') no-repeat;
+
+#img-pepper
+  background: url('https://pp.vk.me/c630125/v630125151/1ede/G-FVz0bas0c.jpg') no-repeat;
+
+#img-tomato
+  background: url('https://pp.vk.me/c630125/v630125151/1ee5/R4k4jbruF2A.jpg') no-repeat;
+
+{veg-names}
+  prefix(background-size, 100%)
+
+#melon:checked ~ .container
+  #img-melon
+    transform: rotateY(0deg) scale(1.5) translateX(200%);
+
+#carrot:checked ~ .container
+  #img-carrot
+    transform: rotateY(0deg) scale(1.5) translateX(120%);
+
+#watermelon:checked ~ .container
+  #img-watermelon
+    transform: rotateY(0deg) scale(1.5) translateX(60%);
+
+#kiwi:checked ~ .container
+  #img-kiwi
+    transform: rotateY(0deg) scale(1.5);
+
+#cucumber:checked ~ .container
+  #img-cucumber
+    transform: rotateY(0deg) scale(1.5) translateX(-60%);
+
+#pepper:checked ~ .container
+  #img-pepper
+    transform: rotateY(0deg) scale(1.5) translateX(-120%);
+
+#tomato:checked ~ .container
+  #img-tomato
+    transform: rotateY(0deg) scale(1.5) translateX(-200%);
+
+#melon:checked ~ .container
+  #img-carrot
+    transf(275%, -40deg)
+  #img-watermelon
+    transf(235%, -35deg)
+  #img-kiwi
+    transf(190%, -30deg)
+  #img-cucumber
+    transf(140%, -25deg)
+  #img-pepper
+    transf(80%, -20deg)
+  #img-tomato
+    transf(20%, -15deg)
+
+#carrot:checked ~ .container
+  #img-melon
+    transf(190%, 40deg)
+  #img-watermelon
+    transf(170%, -40deg)
+  #img-kiwi
+    transf(130%, -35deg)
+  #img-cucumber
+    transf(80%, -30deg)
+  #img-pepper
+    transf(30%, -25deg)
+  #img-tomato
+    transf(-30%, -20deg)
+
+#watermelon:checked ~ .container
+  #img-melon
+    transf(130%, 35deg)
+  #img-carrot
+    transf(100%, 40deg)
+  #img-kiwi
+    transf(80%, -40deg)
+  #img-cucumber
+    transf(40%, -35deg)
+  #img-pepper
+    transf(-10%, -30deg)
+  #img-tomato
+    transf(-60%, -25deg)
+
+#kiwi:checked ~ .container
+  #img-melon
+    transf(90%, 30deg)
+  #img-carrot
+    transf(50%, 35deg)
+  #img-watermelon
+    transf(20%, 40deg)
+  #img-cucumber
+    transf(-20%, -40deg)
+  #img-pepper
+    transf(-50%, -35deg)
+  #img-tomato
+    transf(-90%, -30deg)
+
+#cucumber:checked ~ .container
+  #img-melon
+    transf(60%, 25deg)
+  #img-carrot
+    transf(10%, 30deg)
+  #img-watermelon
+    transf(-40%, 35deg)
+  #img-kiwi
+    transf(-80%, 40deg)
+  #img-pepper
+    transf(-100%, -40deg)
+  #img-tomato
+    transf(-130%, -35deg)
+
+#pepper:checked ~ .container
+  #img-melon
+    transf(30%, 20deg)
+  #img-carrot
+    transf(-30%, 25deg)
+  #img-watermelon
+    transf(-80%, 30deg)
+  #img-kiwi
+    transf(-130%, 35deg)
+  #img-cucumber
+    transf(-170%, 40deg)
+  #img-tomato
+    transf(-190%, -40deg)
+
+#tomato:checked ~ .container
+  #img-melon
+    transf(-20%, 15deg)
+  #img-carrot
+    transf(-80%, 20deg)
+  #img-watermelon
+    transf(-140%, 25deg)
+  #img-kiwi
+    transf(-190%, 30deg)
+  #img-cucumber
+    transf(-235%, 35deg)
+  #img-pepper
+    transf(-275%, 40deg)
