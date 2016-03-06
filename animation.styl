@@ -6,108 +6,109 @@ $items = {
   cucumber: 'https://pp.vk.me/c630125/v630125151/1eb9/Zgg2HCd0yi4.jpg',
   pepper: 'https://pp.vk.me/c630125/v630125151/1ede/G-FVz0bas0c.jpg',
   tomato: 'https://pp.vk.me/c630125/v630125151/1ee5/R4k4jbruF2A.jpg'
+};
+
+$angle_limit = 40deg;
+$len = length($items);
+$angle_step = 35 / $len;
+$step_to_center = 100%;
+$length_to_center = ($len - $len % 2) / 2 * 100%;
+$step_trX = 70 / $len;
+$width = 100% / ($len + 1);
+$height = 140px;
+
+prefix($prop, $arg) {
+  -webkit-{$prop}: $arg;
+  -moz-{$prop}: $arg;
+  -o-{$prop}: $arg;
+  -ms-{$prop}: $arg;
 }
 
-$angle_limit = 40deg
-$len = length($items)
-$angle_step = 35 / $len
-$step_to_center = 100%
-$length_to_center = ($len - $len % 2) / 2 * 100%
-$step_trX = 70 / $len
-$width = 100% / ($len + 1)
-
-prefix(prop, arg) {
-  -webkit-{prop} arg
-  -moz-{prop} arg
-  -o-{prop} arg
-  -ms-{prop} arg
-}
-
-abs(value)
-  if value > 0 {
-    value
+abs($value)
+  if $value > 0 {
+    $value;
   } else {
-    - value
+    - $value;
   }
 
 set_background()
   for $name, $url-img in $items {
     #img-{$name} {
-      background: url($url-img) no-repeat
-      prefix(background-size, 100%)
+      background: url($url-img) no-repeat;
+      prefix(background-size, 100%);
     }
   }
 
 translate($trX, $rotY) {
-  transform: rotateY(0) translateX($trX) perspective(300px) rotateY($rotY) translateZ(-40px)
+  transform: rotateY(0) translateX($trX) perspective(300px) rotateY($rotY) translateZ(-40px);
 }
 
 count_left_limit_trX($count)
-  $sum = 0%
+  $sum = 0%;
   for $i in (0..$count - 1) {
-    $sum += 30% + $step_trX * $i
+    $sum += 30% + $step_trX * $i;
   }
-  $sum
+  $sum;
 
 
 set_animation() {
-  $i = 0
+  $i = 0;
 
   for $veg in $items {
-    $j = 0
-    $trX = $length_to_center + count_left_limit_trX(abs($i - $j))
-    $angleY = $angle_limit - ($i) * $angle_step
+    $j = 0;
+    $trX = $length_to_center + count_left_limit_trX(abs($i - $j));
+    $angleY = $angle_limit - ($i) * $angle_step;
     #in-{$veg} {
       for $other_veg in $items {
         if $other_veg == $veg {
           &:checked ~ .container #img-{$other_veg} {
-            transform: rotateY(0) translateX($length_to_center) scale(1.5)
+            transform: rotateY(0) translateX($length_to_center) scale(1.5);
           }
-          $trX = $length_to_center - 30
-          $angleY = - $angleY - $angle_step
+          $trX = $length_to_center - 30;
+          $angleY = - $angleY - $angle_step;
         } else {
-          $angleY += $angle_step
+          $angleY += $angle_step;
           &:checked ~ .container #img-{$other_veg} {
-            translate($trX, $angleY)
+            translate($trX, $angleY);
           }
           if $j < $i {
-            $trX -= 30 + $step_trX * (abs($i - $j) - 1)
+            $trX -= 30 + $step_trX * (abs($i - $j) - 1);
           } else {
-            $trX -= 30 + $step_trX * abs($i - $j)
+            $trX -= 30 + $step_trX * abs($i - $j);
           }
         }
-        $j += 1
+        $j += 1;
       }
     }
-    $length_to_center -= $step_to_center
-    $i += 1
+    $length_to_center -= $step_to_center;
+    $i += 1;
   }
 }
 
-set_background()
-set_animation()
+set_background();
+set_animation();
 
 * {
-  prefix(user-select, none)
+  prefix(user-select, none);
 }
 
 .container {
-  transform-style: preserve-3d
-  width: 100%
-  text-align: center
-  margin-top: 12em
+  transform-style: preserve-3d;
+  width: 100%;
+  text-align: center;
+  margin-top: 12em;
 }
 
 .veg {
-  display: none
+  display: none;
 }
 
 label {
-  position: relative
-  display: inline-flex
-  width: $width
-  height: 120px
-  transition-property: transform
-  transition-duration: .5s
-  box-shadow: 0 1em 2em rgba(60, 63, 65, .78)
+  position: relative;
+  display: inline-flex;
+  width: $width;
+  height: $height;
+  transition-property: transform;
+  transition-duration: .5s;
+  box-shadow: 0 1em 2em rgba(60, 63, 65, .78);
 }
