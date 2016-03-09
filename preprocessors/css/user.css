@@ -5,28 +5,34 @@
     width: 100%;
 }
 
-.preprocessor pre {
-    margin-right: 60px;
+.vertical-pos {
+    min-width: 55%;
+}
+
+.wide pre:first-child {
+    margin-left: -50px; !important;
+}
+
+.preprocessor code,
+.preprocessor pre{
+    max-height: 450px; !important;
+}
+
+.none-margin pre {
+    display: block;
+}
+
+.none-margin pre code{
+    margin-top: 0; !important;
+    margin-bottom: 0; !important;
 }
 
 .preprocessor pre code {
     font-size: 22px; !important;
-    line-height: 25px; !important;
+    line-height: 27px; !important;
     padding: 0 30px; !important;
 }
 
-.progress {
-    height: 7px !important;
-}
-
-.slide-number {
-    font-size: 35px !important;
-}
-
-.author {
-    text-align: center;
-}
-
-.author small::first-letter {
-    color: red;
+.hero {
+    width: 80%; !important;
 }
