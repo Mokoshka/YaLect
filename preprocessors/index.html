@@ -20,7 +20,7 @@
     </section>
 
     <section>
-        <h2>Пример "как ужасно что-то менять в css"</h2>
+        <h2>Трудности верстальщика</h2>
         <pre class="css"><code>
 div a
 {
@@ -47,7 +47,7 @@ div p
 
     <section>
         <div class="code-row">
-            <pre class="fragment size-XS"><code>
+            <pre class="fragment"><code>
 $text_color = #000;
 div
     a {
@@ -59,13 +59,13 @@ div
         font-color: $text_color;
     }
             </code></pre>
-            <pre class="css fragment size-XS"><code>
+            <pre class="css fragment"><code>
 div a {
-    font: bold italic 12px serif;
+    font: italic serif;
     font-color: #000;
 }
 div p {
-    font: normal small-caps 12px fantasy;
+    font: normal fantasy;
     font-color: #000;
 }
             </code></pre>
@@ -80,7 +80,7 @@ div p {
     </section>
 
     <section>
-        <p class="fragment">Установка</p>
+        <p>Установка</p>
         <pre class="fragment"><code>
 npm install stylus -g
         </code></pre>
@@ -95,7 +95,7 @@ stylus --watch index.styl
 
     <section>
         <h2>Переменные</h2>
-        <div class="code-row">
+        <div class="code-row wide">
             <pre class="fragment"><code>
 $font_style = 14px Helvetica, sans-serif;
 $box_width = 30%;
@@ -108,7 +108,7 @@ div {
             </code></pre>
             <pre class="css fragment"><code>
 div {
-    font: 7px Helvetica, arial, sans-serif;
+    font: 14px Helvetica, sans-serif;
     width: 30%;
     height: 300px;
 }
@@ -153,9 +153,6 @@ div {
     p {
         color: blue;
     }
-    a {
-        text-decoration: none;
-    }
 }
             </code></pre>
             <pre class="css fragment"><code>
@@ -168,31 +165,25 @@ div .name:hover {
 div p {
     color: #00f;
 }
-div a {
-    text-decoration: none;
-}
             </code></pre>
         </div>
     </section>
 
     <section>
         <h2>Массивы и циклы</h2>
-        <div class="code-row">
+        <div class="code-row none-margin">
             <pre><code class="fragment">
-$row-list = 1, 2, 3, 4, 5;
+$row-list = 1, 2, 3, 4;
 for $row in $row-list {
     tr:nth-child({$row}) {
         color: #d0881d;
     }
 }
-            </code>
-            <code class="fragment">
-for $row in 1 2 3 4 5 {...}
-            </code>
-            <code class="fragment">
-for $row in (1..5) {...}
-            </code>
-            </pre>
+            </code><code class="fragment">
+for $row in 1 2 3 4 {...}
+            </code><code class="fragment">
+for $row in (1..4) {...}
+            </code></pre>
             <pre class="css fragment"><code>
 tr:nth-child(1) {
     color: #d0881d;
@@ -206,25 +197,24 @@ tr:nth-child(3) {
 tr:nth-child(4) {
     color: #d0881d;
 }
-tr:nth-child(5) {
-    color: #d0881d;
-}</code></pre>
+            </code></pre>
         </div>
     </section>
 
     <section>
         <h2>Hashes</h2>
         <div class="code-row">
-            <pre class="fragment"><code>
+            <pre><code class="fragment">
 $cats = {
-        cat1: './images/cat1',
-        cat2: './images/cat2'
+        cat-1: './images/cat1.jpg',
+        cat-2: './images/cat2.jpg'
 }
-$items.cat1 = './images/cat3';
-
-for $name, $background-img in $items {
+            </code><code class="fragment">
+$items.cat-1 = './images/cat3.jpg';
+            </code><code class="fragment">
+for $name, $bg-img in $items {
     #img-{$name} {
-        background: url($background-img);
+        background: url($bg-img);
     }
 }
             </code></pre>
@@ -266,7 +256,6 @@ $boxes = 'item1', 'item2', 'item3';
         <div class="code-row">
             <pre class="fragment"><code>
 $boxes = 'item1', 'item2', 'item3';
-
 set_width($len) {
     if $len >= 3 {
         width: 300px;
@@ -274,7 +263,6 @@ set_width($len) {
         width: 200px;
     }
 }
-
 .box {
     set-width(length($boxes))
 }
@@ -294,9 +282,9 @@ set_width($len) {
         </code></pre>
     </section>
 
-    <section>
-        <h2>БЭМ</h2>
-    </section>
+    <!--<section>-->
+        <!--<h2>БЭМ</h2>-->
+    <!--</section>-->
 
     <section>
         <p>Здесь должен быть пример задачи с анимациями</p>
@@ -306,32 +294,36 @@ set_width($len) {
         <h2>Постпроцессоры</h2>
     </section>
 
-</div></div>
+    <section>
+        <img src="images/postprocessor.jpg">
+    </section>
 
-<script src="../lib/js/head.min.js"></script>
-<script src="../js/reveal.js"></script>
-<script>
-    Reveal.initialize({
-        controls: false,
-        progress: true,
-        slideNumber: true,
-        history: true,
-        center: true,
-        hideAddressBar: true,
-        transition: 'slide',
-        dependencies: [
-            {
-                src: '../plugin/highlight/highlight.js',
-                async: true,
-                condition: function () {
-                    return Boolean(document.querySelector('pre code'));
-                },
-                callback: function () {
-                    hljs.initHighlightingOnLoad();
-                }
-            }
-        ]
-    });
-</script>
-</body>
-</html>
+    <section>
+        <h2>Постпроцессоры</h2>
+        <p>PostCSS</p>
+        <p>rework</p>
+    </section>
+
+    <section>
+        <p>Установка PostCSS</p>
+        <pre class="fragment"><code>
+npm install postcss -g
+        </code></pre>
+        <pre class="fragment"><code>
+postcss --use autoprefixer -c options.json -o main.css css/*.css
+        </code></pre>
+    </section>
+
+    <section>
+        <h2>Использование</h2>
+    </section>
+
+    <section>
+        <p>Autoprefixer</p>
+        <p>Color Short</p>
+        <p>Focus</p>
+        <p>Discard Comments</p>
+        <p>Size</p>
+        <p>CSSNext</p>
+        <p>Поддержка IE8</p>
+    </section>
