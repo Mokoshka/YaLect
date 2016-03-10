@@ -16,6 +16,7 @@ $length_to_center = ($len - $len % 2) / 2 * 100%;
 $step_trX = 70 / $len;
 $width = 100% / ($len + 1);
 $height = 140px;
+$length_near_center = 30%;
 
 prefix($prop, $arg) {
   -webkit-{$prop}: $arg;
@@ -43,10 +44,10 @@ translate($trX, $rotY) {
   transform: rotateY(0) translateX($trX) perspective(300px) rotateY($rotY) translateZ(-40px);
 }
 
-count_left_limit_trX($count)
+get_left_limit_trX($count)
   $sum = 0%;
   for $i in (0..$count - 1) {
-    $sum += 30% + $step_trX * $i;
+    $sum += $length_near_center + $step_trX * $i;
   }
   $sum;
 
@@ -56,7 +57,7 @@ set_animation() {
 
   for $veg in $items {
     $j = 0;
-    $trX = $length_to_center + count_left_limit_trX(abs($i - $j));
+    $trX = $length_to_center + get_left_limit_trX(abs($i - $j));
     $angleY = $angle_limit - ($i) * $angle_step;
     #in-{$veg} {
       for $other_veg in $items {
@@ -64,7 +65,7 @@ set_animation() {
           &:checked ~ .container #img-{$other_veg} {
             transform: rotateY(0) translateX($length_to_center) scale(1.5);
           }
-          $trX = $length_to_center - 30;
+          $trX = $length_to_center - $length_near_center;
           $angleY = - $angleY - $angle_step;
         } else {
           $angleY += $angle_step;
@@ -72,9 +73,9 @@ set_animation() {
             translate($trX, $angleY);
           }
           if $j < $i {
-            $trX -= 30 + $step_trX * (abs($i - $j) - 1);
+            $trX -= $length_near_center + $step_trX * (abs($i - $j) - 1);
           } else {
-            $trX -= 30 + $step_trX * abs($i - $j);
+            $trX -= $length_near_center + $step_trX * abs($i - $j);
           }
         }
         $j += 1;
@@ -88,15 +89,12 @@ set_animation() {
 set_background();
 set_animation();
 
-* {
-  prefix(user-select, none);
-}
-
 .container {
   transform-style: preserve-3d;
   width: 100%;
   text-align: center;
   margin-top: 12em;
+  prefix(user-select, none);
 }
 
 .veg {
@@ -105,7 +103,7 @@ set_animation();
 
 label {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   width: $width;
   height: $height;
   transition-property: transform;
