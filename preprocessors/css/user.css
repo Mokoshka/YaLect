@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+.preprocessor pre {
+    margin-right: 60px;
+}
+
 .vertical-pos {
     min-width: 55%;
 }
@@ -13,9 +17,9 @@
     margin-left: -50px; !important;
 }
 
-.preprocessor code,
-.preprocessor pre{
-    max-height: 450px; !important;
+.preprocessor pre,
+.preprocessor pre code {
+    max-height: 700px; !important;
 }
 
 .none-margin pre {
@@ -36,3 +40,20 @@
 .hero {
     width: 80%; !important;
 }
+
+.progress {
+    height: 7px !important;
+}
+
+.slide-number {
+    font-size: 35px !important;
+}
+
+.author {
+    text-align: center;
+}
+
+.author small::first-letter {
+    color: red;
+}
+
