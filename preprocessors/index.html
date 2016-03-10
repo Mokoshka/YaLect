@@ -20,17 +20,19 @@
     </section>
 
     <section>
-        <h2>Трудности верстальщика</h2>
+        <h2>О наболевшем</h2>
         <pre class="css"><code>
-div a
-{
-    font: bold italic 12px serif;
-    font-color: #000;
+.menu {
+    display: inline-block;
 }
-div p
-{
-    font: normal small-caps 12px fantasy;
-    font-color: #000;
+.menu__item {
+    background: #d0881d;
+}
+.menu__item:hover {
+    background: #ebb96f;
+}
+.menu__arrow {
+    margin: 0;
 }
         </code></pre>
     </section>
@@ -48,25 +50,33 @@ div p
     <section>
         <div class="code-row">
             <pre class="fragment"><code>
-$text_color = #000;
-div
-    a {
-        font: italic serif;
-        font-color: $text_color;
-    }
-    p {
-        font: normal fantasy;
-        font-color: $text_color;
-    }
+.menu {
+    display: inline-block;
+}
+.menu__item {
+    background: #d0881d;
+}
+.menu__item:hover {
+    background: #ebb96f;
+}
+.menu__arrow {
+    margin: 0;
+}
+
             </code></pre>
             <pre class="css fragment"><code>
-div a {
-    font: italic serif;
-    font-color: #000;
-}
-div p {
-    font: normal fantasy;
-    font-color: #000;
+$bg_color = #d0881d;
+.menu {
+    display: inline-block;
+    &__item {
+        background: #d0881d;
+        &:hover {
+            background: lighten($bg_color, 40%);
+        }
+    }
+    &__arrow {
+        margin: 0;
+    }
 }
             </code></pre>
         </div>
@@ -97,21 +107,26 @@ stylus --watch index.styl
         <h2>Переменные</h2>
         <div class="code-row wide">
             <pre class="fragment"><code>
-$font_style = 14px Helvetica, sans-serif;
+$font = 14px Helvetica, sans-serif;
 $box_width = 30%;
 $box_height = 300px;
-div {
-    font-style: $font_style;
+
+.block {
+    font: $font;
     width: $box_width;
     height: $box_height;
 }
             </code></pre>
             <pre class="css fragment"><code>
-div {
+.block {
     font: 14px Helvetica, sans-serif;
     width: 30%;
     height: 300px;
 }
+
+
+
+
             </code></pre>
         </div>
     </section>
@@ -121,20 +136,21 @@ div {
         <div class="code-row">
             <pre class="fragment"><code>
 $box_width = 300px;
-$box_height = $box_width + 100;
-$box_padding = $box_width * 0.02;
-div {
+$box_height = $box_width * 2;
+
+.box {
     width: $box_width;
     height: $box_height;
-    padding: $box_padding;
 }
             </code></pre>
             <pre class="css fragment"><code>
-div {
+.box {
     width: 300px;
-    height: 400px;
-    padding: 6px;
+    height: 600px;
 }
+
+
+
             </code></pre>
         </div>
     </section>
@@ -143,28 +159,66 @@ div {
         <h2>Вложенность</h2>
         <div class="code-row">
             <pre class="fragment"><code>
-div {
-    .name {
+.header {
+    .title {
         font-size: 20px;
-        &:hover {
-            color: red;
-        }
     }
-    p {
-        color: blue;
+    .link {
+        color: green;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
             </code></pre>
             <pre class="css fragment"><code>
-div .name {
+.header .title {
     font-size: 20px;
 }
-div .name:hover {
-    color: #f00;
+.header .link {
+    color: #008000;
+    text-decoration: none;
 }
-div p {
-    color: #00f;
+.header .link:hover {
+    text-decoration: underline;
 }
+
+
+            </code></pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>Вложенность</h2>
+        <div class="code-row">
+            <pre class="fragment"><code>
+.header {
+    &__title {
+        font-size: 20px;
+    }
+    &__link {
+        color: green;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+            </code></pre>
+            <pre class="css fragment"><code>
+.header__title {
+    font-size: 20px;
+}
+.header__link {
+    color: #008000;
+    text-decoration: none;
+}
+.header__link:hover {
+    text-decoration: underline;
+}
+
+
             </code></pre>
         </div>
     </section>
@@ -173,29 +227,30 @@ div p {
         <h2>Массивы и циклы</h2>
         <div class="code-row none-margin">
             <pre><code class="fragment">
-$row-list = 1, 2, 3, 4;
+$row-list = 1 2 3 4;
+
 for $row in $row-list {
     tr:nth-child({$row}) {
-        color: #d0881d;
+        width: 10% * $row;
     }
 }
             </code><code class="fragment">
-for $row in 1 2 3 4 {...}
-            </code><code class="fragment">
 for $row in (1..4) {...}
+
+
             </code></pre>
             <pre class="css fragment"><code>
 tr:nth-child(1) {
-    color: #d0881d;
+    width: 10%;
 }
 tr:nth-child(2) {
-    color: #d0881d;
+    width: 20%;
 }
 tr:nth-child(3) {
-    color: #d0881d;
+    width: 30%;
 }
 tr:nth-child(4) {
-    color: #d0881d;
+    width: 40%;
 }
             </code></pre>
         </div>
@@ -211,6 +266,7 @@ $cats = {
 }
             </code><code class="fragment">
 $items.cat-1 = './images/cat3.jpg';
+$items['cat-1'] = './images/cat3.jpg';
             </code><code class="fragment">
 for $name, $bg-img in $items {
     #img-{$name} {
@@ -220,11 +276,15 @@ for $name, $bg-img in $items {
             </code></pre>
             <pre class="css fragment"><code>
 #img-cat1 {
-    background: url("./images/cat3");
+    background: url("./images/cat3.jpg");
 }
+
 #img-cat2 {
-    background: url("./images/cat2");
+    background: url("./images/cat3.png");
 }
+
+
+
             </code></pre>
         </div>
     </section>
@@ -233,19 +293,19 @@ for $name, $bg-img in $items {
         <h2>Условные операторы</h2>
         <div class="code-row">
             <pre class="fragment"><code>
-$boxes = 'item1', 'item2', 'item3';
+$time = 'day';
 
-.box {
-    if length($boxes) >= 3 {
-        width: 300px;
+.sky {
+    if $time == 'day' {
+        background: blue;
     } else {
-        width: 200px;
+        background: black;
     }
 }
             </code></pre>
             <pre class="css fragment"><code>
-.box {
-    width: 300px;
+.sky {
+    background: #00f;
 }
             </code></pre>
         </div>
@@ -255,21 +315,21 @@ $boxes = 'item1', 'item2', 'item3';
         <h2>Миксины</h2>
         <div class="code-row">
             <pre class="fragment"><code>
-$boxes = 'item1', 'item2', 'item3';
-set_width($len) {
-    if $len >= 3 {
-        width: 300px;
+set_bg_color($time) {
+    if $time == 'day' {
+        background: blue;
     } else {
-        width: 200px;
+        background: black;
     }
 }
-.box {
-    set-width(length($boxes))
+
+.sky {
+    set_bg_color('night');
 }
             </code></pre>
             <pre class="css fragment"><code>
-.box {
-    width: 300px;
+.sky {
+    background: #000;
 }
             </code></pre>
         </div>
@@ -283,12 +343,8 @@ set_width($len) {
     </section>
 
     <!--<section>-->
-        <!--<h2>БЭМ</h2>-->
+        <!--<p>Здесь должен быть пример задачи с анимациями</p>-->
     <!--</section>-->
-
-    <section>
-        <p>Здесь должен быть пример задачи с анимациями</p>
-    </section>
 
     <section>
         <h2>Постпроцессоры</h2>
@@ -298,34 +354,29 @@ set_width($len) {
         <img src="images/postprocessor.jpg">
     </section>
 
-    <section>
-        <h2>Постпроцессоры</h2>
-        <p>PostCSS</p>
-        <p>rework</p>
-    </section>
+    <!--<section>-->
+        <!--<h2>Постпроцессоры</h2>-->
+        <!--<p>PostCSS</p>-->
+        <!--<p>rework</p>-->
+    <!--</section>-->
 
     <section>
-        <p>Установка PostCSS</p>
+        <p>PostCSS</p>
         <pre class="fragment"><code>
 npm install postcss -g
         </code></pre>
+        <p class="fragment">Запуск</p>
         <pre class="fragment"><code>
 postcss --use autoprefixer -c options.json -o main.css css/*.css
         </code></pre>
     </section>
 
     <section>
-        <p>CSS-in-JS</p>
-        <p>JS API</p>
-    </section>
-
-    <section>
-        <h2>Популярные модули</h2>
+        <h2>Популярные плагины</h2>
         <p>Autoprefixer</p>
         <p>Color Short</p>
-        <p>Focus</p>
-        <p>Discard Comments</p>
         <p>Size</p>
+        <p>CSSNano</p>
         <p>CSSNext</p>
         <p>Поддержка IE8</p>
     </section>
