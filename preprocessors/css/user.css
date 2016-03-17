@@ -137,6 +137,17 @@ mark span {
     margin-left: -50px !important;
 }
 
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+#css-needs-hero .h3-css-needs-hero {
+    margin-top: -250px;
+}
+
 .mokhov {
     position: absolute;
     top: 0;
@@ -152,6 +163,6 @@ mark span {
 
 @keyframes move_mokhov {
     100% {
-        transform: translateX(0);
+        transform: translateX(-10%);
     }
 }

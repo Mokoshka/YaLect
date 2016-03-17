@@ -11,6 +11,7 @@
 </head>
 <body class="yandex preprocessor"><div class="reveal"><div class="slides">
     <img src="images/mokhov.png" class="mokhov" id="mokhov">
+    <video src="video/supercat.webm" controls="controls" width="100%" class="video" id="supercat"></video>
 
     <section class="large">
         <h2>Процессинг CSS</h2>
@@ -41,9 +42,8 @@
         </code></pre>
     </section>
 
-    <section>
-        <h3>CSS needs a hero</h3>
-        <img src="./images/cat_hero_box.png" class="hero">
+    <section id="css-needs-hero">
+        <h3 class="h3-css-needs-hero">CSS needs a hero</h3>
     </section>
 
     <section>
@@ -906,7 +906,7 @@ body {
         </code></pre>
     </section>
 
-    <section id="postcss_bem">
+    <section id="postcss-bem">
         <h2>PostCSS BEM</h2>
         <pre><code>
 @b nav {
@@ -1079,8 +1079,8 @@ p:first-child, p.special {
 <script src="../lib/js/head.min.js"></script>
 <script src="../js/reveal.js"></script>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/attrchange.js"></script>
+<script src="js/vendors/jquery.min.js"></script>
+<script src="js/vendors/attrchange.js"></script>
 <script src="js/main.js"></script>
 <script>
     Reveal.initialize({
