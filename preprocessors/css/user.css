@@ -57,3 +57,88 @@
     color: red;
 }
 
+.img-post,
+.img-pre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 3px yellow; !important;
+}
+.img-pre .box,
+.img-pre .pr-arrow,
+.img-pre .text,
+.img-post .box,
+.img-post .text,
+.img-post .pr-arrow,
+.img-post p {
+    margin: 0; !important;
+    padding: 0; !important;
+    display: inline-block;
+}
+
+.text {
+    text-decoration: underline;
+}
+
+.img-pre .pr-arrow {
+    margin: 10px 0 20px;
+}
+
+.img-post .pr-arrow {
+    font-size: 45px;
+}
+
+.box {
+    max-width: 60%;
+    min-width: 40%;
+    margin: auto 0; !important;
+}
+
+.box.blue {
+    border: solid 3px blue; !important;
+}
+
+.box.red {
+    border: solid 3px red;
+}
+
+.img-pre {
+    margin-top: 60px; !important;
+}
+
+#settings {
+    width: 85%
+}
+
+#chrome {
+    width: 80%;
+}
+
+img#webstorm {
+    width: 1000px; !important;
+    max-width: 1300px; !important;
+}
+
+pre.wide-code {
+    width: 1100px; !important;
+    margin-left: -40px;
+}
+
+code.css.small-font.hljs {
+    font-size: 19px; !important;
+}
+
+mark,
+mark span {
+    color: black !important;
+}
+
+.marg {
+    margin-left: -50px !important;
+}
+
+/*.mokhov {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+/*}*/
