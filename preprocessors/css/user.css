@@ -144,7 +144,11 @@ mark span {
     height: 100%;
 }
 
-#css-needs-hero .h3-css-needs-hero {
+#supercat .h3-supercat {
+    margin-top: -250px;
+}
+
+#cocaine .h3-cocaine {
     margin-top: -250px;
 }
 
