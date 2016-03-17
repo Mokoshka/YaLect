@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/user.css">
 </head>
 <body class="yandex preprocessor"><div class="reveal"><div class="slides">
+    <img src="images/mokhov.png" class="mokhov" id="mokhov">
 
     <section class="large">
         <h2>Процессинг CSS</h2>
@@ -905,8 +906,7 @@ body {
         </code></pre>
     </section>
 
-    <section>
-        <!--<img src="images/mokhov.png" class="mokhov">-->
+    <section id="postcss_bem">
         <h2>PostCSS BEM</h2>
         <pre><code>
 @b nav {
@@ -1078,6 +1078,10 @@ p:first-child, p.special {
 
 <script src="../lib/js/head.min.js"></script>
 <script src="../js/reveal.js"></script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/attrchange.js"></script>
+<script src="js/main.js"></script>
 <script>
     Reveal.initialize({
         controls: false,

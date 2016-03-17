@@ -137,8 +137,21 @@ mark span {
     margin-left: -50px !important;
 }
 
-/*.mokhov {*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-/*}*/
+.mokhov {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    animation-delay: 3s;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    z-index: 10;
+    display: none;
+}
+
+@keyframes move_mokhov {
+    100% {
+        transform: translateX(0);
+    }
+}
