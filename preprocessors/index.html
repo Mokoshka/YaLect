@@ -522,6 +522,7 @@ $bg_img = sun.png;
 
     <section>
         <h2>Миксины</h2>
+        <h2>Import</h2>
         <div class="code-row">
             <pre class="fragment"><code>
 set_bg_color($theme) {
@@ -976,12 +977,12 @@ nav :visited > span {
     <section>
         <h3>Matches</h3>
         <pre><code class="css">
-.:matches(:first-child, .special) {
+.rating-star:matches(:first-child, .special) {
     color: red;
 }
         </code></pre>
         <pre><code class="css">
-p:first-child, p.special {
+.rating-star:first-child, .rating-star.special {
     color: red;
 }
         </code></pre>
@@ -1024,12 +1025,20 @@ p:first-child, p.special {
     <section>
         <h3>node-pixrem</h3>
         <pre><code>
+body {
+    font-size: 16px;
+}
+
 .remFallback {
     height: 10rem;
     font: 2rem Arial;
 }
         </code></pre>
         <pre><code>
+body {
+    font-size: 16px;
+}
+
 .remFallback {
     height: 160px;
     height: 10rem;
